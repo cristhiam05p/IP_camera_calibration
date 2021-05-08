@@ -31,18 +31,15 @@ class Camera:
 
 
 def create_camera(rtsp_link, path):
-    ###
     rows = 5  # number of rows
     columns = 3  # number od columns
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
-    ###
     id_save = 0
     video_stream1 = Camera(rtsp_link)
     while True:
         frame = video_stream1.getFrame()
         if frame is not None:
             cv2.imshow(rtsp_link, frame)
-            ###
             grayR = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             retR, cornersR = cv2.findChessboardCorners(grayR, (rows, columns), None)
             if (retR == True):
@@ -56,7 +53,6 @@ def create_camera(rtsp_link, path):
                     id_save = id_save + 1
                 else:
                     print('Images not saved')
-            ###
         pressedkey = cv2.waitKey(1) & 0xff
         if pressedkey == ord('q'):
             break
