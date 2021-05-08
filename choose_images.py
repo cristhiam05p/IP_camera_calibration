@@ -19,16 +19,8 @@ path_L = r"C:\Users\Cristhiam\OneDrive - Universidad Nacional de Colombia\Deskto
 # termination criteria
 criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 
-#rtsp_link1 = "rtsp://admin:123456@192.168.1.168/sub"
-#rtsp_link2 = "rtsp://admin:123456@192.168.1.169/sub"
-
-# Call the two cameras
-#CamR = cv2.VideoCapture(rtsp_link1)   # 1 -> Right Camera
-#CamL = cv2.VideoCapture(rtsp_link2)   # 2 -> Left Camera
 
 while True:
-    #retR, frameR = CamR.read()
-    #retL, frameL = CamL.read()
     str_id_image = str(id_image)
     frameR = cv2.imread(os.path.join(path_R, 'chessboard-R'+str_id_image+'.png'))
     frameL = cv2.imread(os.path.join(path_L, 'chessboard-R' + str_id_image + '.png'))
@@ -69,7 +61,4 @@ while True:
     id_image = id_image + 1
     if cv2.waitKey(1) & 0xFF == ord(' '):   # space bar to exit
         break
-
-#CamR.release()
-#CamL.release()
 cv2.destroyAllWindows()
